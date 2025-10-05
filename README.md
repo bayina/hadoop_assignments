@@ -46,7 +46,7 @@ USER hadoop
 ```yaml
 services:
   namenode:
-    image: hadoop-python:3
+    image: hadoop-custom:3
     container_name: namenode
     ulimits:
       nofile:
@@ -64,7 +64,7 @@ services:
       ENSURE_NAMENODE_DIR: "/tmp/hadoop-root/dfs/name"
 
   datanode:
-    image: hadoop-python:3
+    image: hadoop-custom:3
     container_name: datanode
     ulimits:
       nofile:
@@ -75,7 +75,7 @@ services:
       - ./config
 
   resourcemanager:
-    image: hadoop-python:3
+    image: hadoop-custom:3
     container_name: resourcemanager
     ulimits:
       nofile:
@@ -89,7 +89,7 @@ services:
       - ./config
 
   nodemanager:
-    image: hadoop-python:3
+    image: hadoop-custom:3
     container_name: nodemanager
     ulimits:
       nofile:
@@ -106,7 +106,7 @@ services:
 
 ### 1. Build Image
 ```bash
-docker build -t hadoop-python:3 .
+docker build -t hadoop-custom:3 .
 ```
 
 ### 2. Start Cluster
@@ -114,17 +114,16 @@ docker build -t hadoop-python:3 .
 docker compose up -d
 ```
 
-### 3. Format NameNode (first time only)
-```bash
-docker compose run --rm namenode hdfs namenode -format
-docker compose restart namenode datanode
-```
-
 ---
 
 ## ⚙️ Inside NameNode (Run via Docker Exec)
 
 You can use `docker exec` or open the container via Docker Desktop UI → Exec terminal.
+
+> Checkout the files for list of all the commands to execute
+
+1. [Java Commands](./java_commands.md)
+2. [Python Commands](./python_commands.md)
 
 ### 1. Load Gutenberg Data
 ```bash

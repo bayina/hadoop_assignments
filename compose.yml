@@ -1,7 +1,7 @@
 services:
    namenode:
-      image: hadoop-python:3
-      conainer_name: namenode
+      image: hadoop-custom:3
+      container_name: namenode
       ulimits:
         nofile:
           soft: "65536"
@@ -17,8 +17,8 @@ services:
       environment:
           ENSURE_NAMENODE_DIR: "/tmp/hadoop-root/dfs/name"
    datanode:
-      image: hadoop-python:3
-      conainer_name: datanode
+      image: hadoop-custom:3
+      container_name: datanode
       ulimits:
         nofile:
           soft: "65536"
@@ -27,7 +27,7 @@ services:
       env_file:
         - ./config
    resourcemanager:
-      image: hadoop-python:3
+      image: hadoop-custom:3
       container_name: resourcemanager
       ulimits:
         nofile:
@@ -42,7 +42,7 @@ services:
       volumes:
         - ./test.sh:/opt/test.sh
    nodemanager:
-      image: hadoop-python:3
+      image: hadoop-custom:3
       container_name: nodemanager
       ulimits:
         nofile:
