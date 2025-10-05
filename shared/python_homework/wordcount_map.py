@@ -9,5 +9,6 @@ import re
 tokenizer = re.compile(r"[A-Za-z0-9']+").findall
 
 for line in sys.stdin:
+    # Convert line to lowercase and extract words.
     for word in tokenizer(line.lower()):
         print(f"{word}\t1")
