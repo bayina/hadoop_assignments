@@ -3,6 +3,12 @@
 chmod +x /mnt/python_homework/wordcount_map.py /mnt/python_homework/wordcount_reduce.py
 command -v dos2unix >/dev/null 2>&1 && dos2unix /mnt/python_homework/wordcount_map.py /mnt/python_homework/wordcount_reduce.py
 ```
+# Load Gutenberg into HDFS
+```bash
+hdfs dfs -mkdir -p /user/hadoop/input/gutenberg
+hdfs dfs -put -f /mnt/datasets/gutenberg/*.txt /user/hadoop/input/gutenberg/
+hdfs dfs -ls -h /user/hadoop/input/gutenberg
+```
 
 # clean old output
 ```bash
